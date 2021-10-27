@@ -44,4 +44,10 @@ function getRandomSymbol(){
 console.log(getRandomSymbol());
 
 
-
+// OBJECT TO STORE ALL THE CHARACTER GENERATOR FUNCTIONS--gets them to a central location (organization) and makes them easier to access:
+const randomFunctions = {
+    lower: getRandomLower,
+    upper: getRandomUpper,
+    number: getRandomNumber,
+    symbol: getRandomSymbol,
+}
