@@ -50,4 +50,15 @@ const randomFunctions = {
     upper: getRandomUpper,
     number: getRandomNumber,
     symbol: getRandomSymbol,
-}
+};
+
+// Selecting the DOM Elements (El for Element)--these are all IDs on the webpage:
+const resultEl = document.querySelector(`#result`);
+const clipboardEl = document.querySelector(`#clipboard`);
+const lowercaseEl = document.querySelector(`#lowercase`);
+const uppercaseEl = document.querySelector(`#uppercase`);
+const numbersEl = document.querySelector(`#numbers`);
+const symbolsEl = document.querySelector(`#symbols`);
+const lengthEl = document.querySelector(`#length`);
+const generateEl = document.querySelector(`#generate`);
+
