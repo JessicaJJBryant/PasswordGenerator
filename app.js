@@ -133,4 +133,30 @@ generateEl.addEventListener(`click`, () => {
     resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
 });
 
+// COPY PASSWORD
+clipboardEl.addEventListener(`click`, () => {
+    // Creating a textarea element which will be used to put the password inside of so that it can be selected/copied
+    const textarea = document.createElement(`textarea`);
+    // Accessing the text/string value for the "result" span and setting it to the password variable
+    const password = resultEl.innerText;
+    // Error Handling--If user clicks the clipboard while no password is displayed, the function will alert and end and nothing will be copied to the clipboard.
+    if (password === ``){
+        alert(`Please generate a password first.`);
+        return;
+    }
+    // Setting the value for the textarea to the password that is currently being displayed.
+    textarea.value = password;
+    // Selecting the body element (DOM basics):
+    const body = document.querySelector(`body`);
+    // Adding the textarea to the webpage/document inside the body element:
+    body.append(textarea);
+    // Using the select method which selects (AKA Focuses in on) an element. This will highlight/select the value inside the textarea:
+    textarea.select();
+    // Using execCommand to copy the selected value to the clipboard on the device the webpage is being viewed on. NOTE: some execCommand commands/arguments are not supported by all browsers (but copy and cut are).
+    document.execCommand(`copy`);
+    // Removing the textarea element from the webpage/document
+    textarea.remove();
+    // We put this alert under the textarea.remove() just to make sure the user doesn't see the textarea. 
+    alert(`Password has been copied to the clipboard.`);
+});
 
