@@ -113,7 +113,24 @@ function generatePassword(lower, upper, number, symbol, length) {
     // 4. ADD THE GENERATED PASSWORD TO THE FINAL PASSWORD VARIABLE AND RETURN IT FROM THE FUNCTION
     // Using slice to remove the extra characters if necessary (starts at index 0 and goes up to but not including the length if the length is not a multiple if not a multiple of the number of checkboxes/options selected)
     const finalPassword = generatedPassword.slice(0, length);
+    console.log(finalPassword);
     return finalPassword;
 }
 
-generatePassword(true, true, true, true, 3); //Example of the generatePassword function using the defaults
+generatePassword(true, true, true, true, 10); //Example of the generatePassword function using the defaults
+
+// EVENT LISTENER for when the "Generate Password" button is clicked 
+generateEl.addEventListener(`click`, () => {
+    // Checking if the following options/checkboxes are selected/checked and setting the true or false values to the respective variables
+    const hasLower = lowercaseEl.checked;
+    const hasUpper = uppercaseEl.checked;
+    const hasNumber = numbersEl.checked;
+    const hasSymbol = symbolsEl.checked;
+    // Accessing the value for the length input and changing the value from a string to a number (NOTE: the value returned from a number input is a string value and that is why we must use parseInt)
+    const length = parseInt(lengthEl.value);
+    console.log(hasLower, hasUpper, hasNumber, hasSymbol, length);
+    // The generatePassword function takes the true/false values determined by the checkboxes as well as the number from the number length input (4-20) and returns a string (AKA The Password) which is set as the innerText value for the "result" (AKA Span) element that we set to the resultEl variable up above on line 56.
+    resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+});
+
+
